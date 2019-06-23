@@ -153,7 +153,7 @@ module FoldableExercises where
   partition predicate list =
     case list of
       (x :| xs) ->
-        let ~(lAcc, rAcc) = partition predicate xs
+        let ~(lAcc, rAcc) = partition predicate xs -- What is ~? See https://en.wikibooks.org/wiki/Haskell/Laziness#Lazy_pattern_matching
         in if predicate x then
           (x :| lAcc, rAcc)
         else
