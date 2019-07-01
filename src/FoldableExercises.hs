@@ -167,13 +167,11 @@ sumTailRec xs =
 -- ... (continue here)
 
 
-
 -- Now assume that the strictness optimiser IS in use and write out the evaluation
 -- steps. Put each step on its own line.
 -- Here's the start:
 -- sumTailRec (1 :| 2 :| 3 :| EndOfList)
 -- ... (continue here)
-
 
 
 -- Observe the change in memory usage by calling sumUpTailRecAndPrint from your app
@@ -187,15 +185,9 @@ sumUpTailRecAndPrint = print $ sumTailRec $ countDownFrom 10000000
 
 
 -- Implement a function that takes a list and returns it in reverse order.
+-- Consider carefully whether this should be tail recursive or not
 reverseList :: MyList a -> MyList a
 reverseList list =
-  undefined
-
-
--- Implement a function that filters a list using a predicate function.
--- The list elements should retain their original order
-filter :: (a -> Bool) -> MyList a -> MyList a
-filter predicate list =
   undefined
 
 
@@ -204,7 +196,7 @@ filter predicate list =
 -- be retained.
 -- For example:
 -- isOdd x = x `mod` 2 == 1
--- partition isOdd (3 :| 4 :| 5 :| EndOfList) = ((3 :| 5 :| EndOfList), (4 :| EndOfList))
+-- partition isOdd (3 :| 4 :| 5 :| EndOfList) == ((3 :| 5 :| EndOfList), (4 :| EndOfList))
 partition :: (a -> Bool) -> MyList a -> (MyList a, MyList a)
 partition predicate list =
   undefined
@@ -215,7 +207,7 @@ partition predicate list =
 -- list elements should be retained.
 -- For example:
 -- isOdd x = x `mod` 2 == 1
--- partition isOdd (3 :| 4 :| 5 :| EndOfList) = ((3 :| 5 :| EndOfList), (4 :| EndOfList))
+-- partition isOdd (3 :| 4 :| 5 :| EndOfList) == ((3 :| 5 :| EndOfList), (4 :| EndOfList))
 -- HINT: You will need to use your reverseList function
 partitionTailRec :: (a -> Bool) -> MyList a -> (MyList a, MyList a)
 partitionTailRec predicate list =
