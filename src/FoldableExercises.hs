@@ -11,6 +11,7 @@ data MyList a
 
 infixr 5 :|
 
+
 -- The replicate function creates a list that contains the `x` parameter count `times`.
 -- eg. replicate 3 "a" == "a" :| "a" :| "a" :| EndOfList
 replicate :: Int -> a -> MyList a
@@ -99,6 +100,7 @@ mapUsingFoldr fn list =
 
 -- Do you think your mapUsingFoldr can be used on infinite lists
 -- or very long lists without materialising the whole list?
+
 
 -- Reimplement your filter function using your foldr
 filterUsingFoldr :: (a -> Bool) -> MyList a -> MyList a
