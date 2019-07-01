@@ -204,7 +204,6 @@ sumTailRec xs = step 0 xs
 -- step 6 EndOfList
 -- 6
 
-
 -- Observe the change in memory usage by calling sumUpTailRecAndPrint from your app
 -- entry point (in app/Main.hs) and then running your app with
 -- Haskell GC summary like so:
@@ -216,6 +215,7 @@ sumUpTailRecAndPrint = print $ sumTailRec $ countDownFrom 10000000
 
 
 -- Implement a function that takes a list and returns it in reverse order.
+-- Consider carefully whether this should be tail recursive or not
 reverseList :: MyList a -> MyList a
 reverseList list = step EndOfList list
   where
@@ -223,22 +223,12 @@ reverseList list = step EndOfList list
     step acc EndOfList = acc
 
 
--- Implement a function that filters a list using a predicate function.
--- The list elements should retain their original order
-filter :: (a -> Bool) -> MyList a -> MyList a
-filter predicate (x :| xs) =
-  if predicate x then
-    x :| filter predicate xs
-  else
-    filter predicate xs
-
-
 -- Implement the partition function. Partition uses a predicate function to
 -- split a list into two sublists. The order of the list elements should
 -- be retained.
 -- For example:
 -- isOdd x = x `mod` 2 == 1
--- partition isOdd (3 :| 4 :| 5 :| EndOfList) = ((3 :| 5 :| EndOfList), (4 :| EndOfList))
+-- partition isOdd (3 :| 4 :| 5 :| EndOfList) == ((3 :| 5 :| EndOfList), (4 :| EndOfList))
 partition :: (a -> Bool) -> MyList a -> (MyList a, MyList a)
 partition predicate list =
   case list of
@@ -258,7 +248,7 @@ partition predicate list =
 -- list elements should be retained.
 -- For example:
 -- isOdd x = x `mod` 2 == 1
--- partition isOdd (3 :| 4 :| 5 :| EndOfList) = ((3 :| 5 :| EndOfList), (4 :| EndOfList))
+-- partition isOdd (3 :| 4 :| 5 :| EndOfList) == ((3 :| 5 :| EndOfList), (4 :| EndOfList))
 -- HINT: You will need to use your reverseList function
 partitionTailRec :: (a -> Bool) -> MyList a -> (MyList a, MyList a)
 partitionTailRec predicate list =
