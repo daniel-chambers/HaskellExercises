@@ -49,7 +49,7 @@ take count list =
 
 -- Implement `countDownFrom` which counts down to zero from the number you pass in
 -- using recursion.
--- eg. countDownFrom 3 == Cons (3,Cons (2,Cons (1,Cons (0,EndOfList))))
+-- eg. countDownFrom 3 == (3 :| 2 :| 1 :| 0 :| EndOfList)
 countDownFrom :: Int -> MyList Int
 countDownFrom start =
   undefined
